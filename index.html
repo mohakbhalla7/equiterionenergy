@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equiterion Energy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #083344 0%, #155e75 25%, #0891b2 75%, #22d3ee 100%);
+        }
+
+        .hero-pattern {
+            background-image:
+                url("landing-page.jpg"),
+                radial-gradient(circle at 25% 25%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(8, 145, 178, 0.15) 0%, transparent 50%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
+            background-repeat: no-repeat, repeat, repeat, repeat;
+            background-size: cover, auto, auto, auto;
+            background-position: center center, 0 0, 0 0, 0 0;
+
+            /* height: 100vh; */
+            width: 100%;
+        }
+
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .card-modern {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-modern:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stagger-1 {
+            animation-delay: 0.1s;
+        }
+
+        .stagger-2 {
+            animation-delay: 0.2s;
+        }
+
+        .stagger-3 {
+            animation-delay: 0.3s;
+        }
+
+        .stagger-4 {
+            animation-delay: 0.4s;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #0891b2, #06b6d4, #67e8f9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-text-light {
+            background: linear-gradient(135deg, #0f766e, #0891b2, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #0891b2, #06b6d4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px -12px rgba(8, 145, 178, 0.4);
+        }
+
+        .section-divider {
+            background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+            height: 1px;
+            margin: 4rem 0;
+        }
+
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #0891b2, #22d3ee);
+            z-index: 9999;
+            transition: width 0.3s ease;
+        }
+
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .team-card {
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            border: 1px solid rgba(8, 145, 178, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .team-card:hover {
+            transform: translateY(-12px) rotateY(5deg);
+            box-shadow: 0 25px 50px -12px rgba(8, 145, 178, 0.25);
+            border-color: rgba(8, 145, 178, 0.3);
+        }
+
+        .metric-counter {
+            font-variant-numeric: tabular-nums;
+        }
+    </style>
+</head>
+
+<body class="font-sans">
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-blur shadow-xl fixed w-full top-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center group">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-br from-green-400 via-emerald-500 to-cyan-600 rounded-2xl mr-4 flex items-center justify-center shadow-lg group-hover:shadow-cyan-400/25 transition-all duration-300 group-hover:scale-110">
+
+                            <div class="w-10 h-10 bg-white rounded-xl  flex items-center justify-center overflow-hidden">
+                                <img src="Logo1.jpg" alt="Logo" class="w-10 h-10 object-contain">
+                            </div>
+                        </div>
+                        <div>
+                            <span class="text-2xl font-bold gradient-text">Equiterion Energy</span>
+                            <!-- <div class="text-xs text-gray-500 font-medium">Energy in Balance with the Earth</div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden lg:block">
+                    <div class="ml-10 flex items-center space-x-1">
+                        <a href="#home"
+                            class="text-teal-700 hover:text-cyan-600 px-4 py-2 text-sm font-medium transition-all duration-300 rounded-xl hover:bg-cyan-50 relative group">
+                            Home
+                            <span
+                                class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-cyan-600 transition-all duration-300 group-hover:w-8 transform -translate-x-1/2"></span>
+                        </a>
+                        <a href="#vision"
+                            class="text-teal-700 hover:text-cyan-600 px-4 py-2 text-sm font-medium transition-all duration-300 rounded-xl hover:bg-cyan-50 relative group">
+                            Vision
+                            <span
+                                class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-cyan-600 transition-all duration-300 group-hover:w-8 transform -translate-x-1/2"></span>
+                        </a>
+                        <a href="#product"
+                            class="text-teal-700 hover:text-cyan-600 px-4 py-2 text-sm font-medium transition-all duration-300 rounded-xl hover:bg-cyan-50 relative group">
+                            Technology
+                            <span
+                                class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-cyan-600 transition-all duration-300 group-hover:w-8 transform -translate-x-1/2"></span>
+                        </a>
+                        <a href="#team"
+                            class="text-teal-700 hover:text-cyan-600 px-4 py-2 text-sm font-medium transition-all duration-300 rounded-xl hover:bg-cyan-50 relative group">
+                            Team
+                            <span
+                                class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-cyan-600 transition-all duration-300 group-hover:w-8 transform -translate-x-1/2"></span>
+                        </a>
+                        <a href="#contact"
+                            class="text-teal-700 hover:text-cyan-600 px-4 py-2 text-sm font-medium transition-all duration-300 rounded-xl hover:bg-cyan-50 relative group">
+                            Partner
+                            <span
+                                class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-cyan-600 transition-all duration-300 group-hover:w-8 transform -translate-x-1/2"></span>
+                        </a>
+                        <a href="#join">
+                            <button class="btn-primary text-white px-8 py-3 rounded-2xl font-semibold ml-4 shadow-lg">
+                                Join Our Mission
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:hidden">
+                    <button id="mobile-menu-btn"
+                        class="text-teal-700 hover:text-cyan-600 p-2 rounded-xl hover:bg-cyan-50 transition-all duration-300">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="lg:hidden hidden nav-blur border-t border-gray-200">
+            <div class="px-4 pt-4 pb-6 space-y-2">
+                <a href="#home"
+                    class="block px-4 py-3 text-teal-700 hover:text-cyan-600 hover:bg-cyan-50 rounded-xl transition-all duration-300">Home</a>
+                <a href="#vision"
+                    class="block px-4 py-3 text-teal-700 hover:text-cyan-600 hover:bg-cyan-50 rounded-xl transition-all duration-300">Vision</a>
+                <a href="#product"
+                    class="block px-4 py-3 text-teal-700 hover:text-cyan-600 hover:bg-cyan-50 rounded-xl transition-all duration-300">Technology</a>
+                <a href="#team"
+                    class="block px-4 py-3 text-teal-700 hover:text-cyan-600 hover:bg-cyan-50 rounded-xl transition-all duration-300">Team</a>
+                <a href="#contact"
+                    class="block px-4 py-3 text-teal-700 hover:text-cyan-600 hover:bg-cyan-50 rounded-xl transition-all duration-300">Partner</a>
+                <button class="w-full btn-primary text-white px-4 py-3 rounded-xl font-semibold mt-4"><a href="#join">Join Our
+                    Mission</a></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home"
+        class="gradient-bg hero-pattern h-screen flex items-center justify-center relative overflow-hidden">
+
+        <!-- Floating Elements -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute [top:35%] [left:50%] w-20 h-20 bg-green-100/30 rounded-full floating-animation"
+                style="animation-delay:-1s;"></div>
+            <div class="absolute top-[75%] right-[7%] w-16 h-16 bg-emerald-50/20 rounded-full floating-animation"
+                style="animation-delay:-2s;"></div>
+            <div class="absolute top-[50%] right-[2%] w-12 h-12 bg-blue-500/15 rounded-full floating-animation"
+                style="animation-delay:-4s;"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="max-w-4xl mx-auto mr-16 px-4 sm:px-6 lg:px-8 py-8 text-center relative z-10">
+            <!-- Hero Icon -->
+            <div class="mb-2 fade-in-up">
+                <div
+                    class="w-20 h-20 glass-morphism rounded-3xl mx-auto mb-2 flex items-center justify-center floating-animation">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-2xl flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-leaf-icon lucide-leaf">
+                            <path
+                                d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
+                            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Headline -->
+            <div class="space-y-3 mb-6">
+                <h1 class="text-xl md:text-5xl font-bold text-white leading-tight fade-in-up stagger-1">
+                    Energy in Balance
+                    <span
+                        class="block gradient-text bg-gradient-to-r from-cyan-500 via-teal-400 to-emerald-600 bg-clip-text text-transparent">
+                        With the Earth.
+                    </span>
+                </h1>
+            </div>
+
+            <!-- Description -->
+            <!-- <p
+                class="text-base md:text-lg text-cyan-100 mb-8 max-w-2xl mx-auto fade-in-up stagger-3 leading-relaxed font-light">
+                Generating clean electricity using CO₂ as a fuel. We're pioneering revolutionary technology that turns
+                carbon
+                dioxide into sustainable energy — creating a balanced future for our planet.
+            </p> -->
+
+            <!-- Stats Preview -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-10 fade-in-up stagger-3">
+                <div class="glass-morphism rounded-2xl p-4 text-center">
+                    <div class="text-2xl font-bold text-white mb-1 metric-counter">100%</div>
+                    <div class="text-cyan-500 text-sm font-medium">Sustainable Energy</div>
+                </div>
+                <div class="glass-morphism rounded-2xl p-4 text-center">
+                    <div class="text-2xl font-bold text-white mb-1 metric-counter">24x7</div>
+                    <div class="text-cyan-500 text-sm font-medium">Operation</div>
+                </div>
+                <div class="glass-morphism rounded-2xl p-4 text-center">
+                    <div class="text-2xl font-bold text-white mb-1 metric-counter">Zero</div>
+                    <div class="text-cyan-500 text-sm font-medium">Emissions</div>
+                </div>
+            </div>
+
+            <p
+                class="text-base md:text-lg text-white mt-8 mb-8 max-w-2xl mx-auto fade-in-up stagger-3 leading-relaxed font-medium">
+                ...and it's not Steam
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row mt-8 gap-4 justify-center items-center fade-in-up stagger-4">
+                <button class="btn-primary text-white px-8 py-3 rounded-2xl font-semibold text-base shadow-xl min-w-48">
+                    <a href="#product">Discover Our Technology</a>
+                </button>
+                <!-- <button
+                    class="glass-morphism text-white px-8 py-3 rounded-2xl font-semibold text-base hover:bg-white/20 transition-all duration-300 min-w-48">
+                    Watch Demo Video
+                </button> -->
+            </div>
+
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </div>
+    </section>
+
+
+    <!-- Vision & Mission Section -->
+    <section id="vision" class="py-32 bg-gradient-to-br from-emerald-100 via-cyan-50 to-teal-50 relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-30">
+            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-teal-100/20 to-transparent"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-bold text-teal-900 mb-6">Our Purpose</h2>
+                <p class="text-xl text-teal-600 max-w-3xl mx-auto font-light">
+                    To pioneer grid resilience by making clean energy the stable fuel for India's sustainable future.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-stretch">
+                <!-- Vision Card -->
+                <div class="card-modern rounded-3xl p-12 h-full relative overflow-hidden group">
+                    <!-- Background Gradient -->
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-cyan-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+
+                    <div class="relative z-10">
+                        <div
+                            class="w-20 h-20 bg-gradient-to-br from-teal-600 to-cyan-700 rounded-3xl flex items-center justify-center mb-8 shadow-lg group-hover:shadow-teal-600/25 transition-all duration-300 group-hover:scale-110">
+                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                </path>
+                            </svg>
+                        </div>
+
+                        <h3 class="text-3xl font-bold text-teal-900 mb-8">Our Vision</h3>
+
+                        <div class="space-y-6 mb-8">
+                            <p class="text-lg text-teal-700 leading-relaxed">
+                                To spearhead a decentralized, carbon-neutral power revolution across India,
+                                empowering urban and suburban communities to achieve a new level of energy
+                                resilience and grid contribution.
+                            </p>
+                            <p class="text-teal-600 leading-relaxed">
+                                This success will drastically reduce the overall burden on traditional grids
+                                by enabling bi-directional energy flow, establishing a replicable microgrid model
+                                for global sustainable development, with the initial realization targeted by 2030.
+                            </p>
+                        </div>
+
+                        <!-- Vision Metrics -->
+                        <div class="grid grid-cols-2 gap-6 pt-6 border-t border-gray-100">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-teal-700 metric-counter">2030</div>
+                                <div class="text-sm text-teal-500 font-medium">Northern India Deployment</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-teal-700 metric-counter">100%</div>
+                                <div class="text-sm text-teal-500 font-medium">Carbon Neutral</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission Card -->
+                <div class="card-modern rounded-3xl p-12 h-full relative overflow-hidden group">
+                    <!-- Background Gradient -->
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-green-600/5 to-emerald-700/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+
+                    <div class="relative z-10">
+                        <div
+                            class="w-20 h-20 bg-gradient-to-br from-slate-500 to-slate-600 rounded-3xl flex items-center justify-center mb-8 shadow-lg group-hover:shadow-slate-500/25 transition-all duration-300 group-hover:scale-110">
+                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z">
+                                </path>
+                            </svg>
+                        </div>
+
+                        <h3 class="text-3xl font-bold text-teal-900 mb-8">Our Mission</h3>
+
+                        <p class="text-lg text-teal-700 mb-8 leading-relaxed">
+                            Our mission is centered on three strategic pillars to deliver reliable,
+                            sustainable energy to Northern India:
+                        </p>
+
+                        <!-- Mission Points -->
+                        <div class="space-y-4">
+                            <div class="flex items-start group/item">
+                                <div
+                                    class="w-3 h-3 bg-gradient-to-r from-teal-500 to-cyan-600 rounded-full mr-4 mt-2 group-hover/item:scale-125 transition-transform duration-300">
+                                </div>
+                                <div
+                                    class="text-teal-600 group-hover/item:text-teal-900 transition-colors duration-300">
+                                    <b>Fuel & Tech:</b> Develop CO₂-fueled, carbon-neutral generators for reliable, 24x7 power generation.
+                                </div>
+                            </div>
+                            <div class="flex items-start group/item">
+                                <div
+                                    class="w-3 h-3 bg-gradient-to-r from-teal-500 to-cyan-600 rounded-full mr-4 mt-2 group-hover/item:scale-125 transition-transform duration-300">
+                                </div>
+                                <div
+                                    class="text-teal-600 group-hover/item:text-teal-900 transition-colors duration-300">
+                                    <b>Integration:</b> Establish grid-tied microgrids across Northern India to ensure community resilience and support the main power grid.
+                                </div>
+                            </div>
+                            <div class="flex items-start group/item">
+                                <div
+                                    class="w-3 h-3 bg-gradient-to-r from-teal-500 to-cyan-600 rounded-full mr-4 mt-2 group-hover/item:scale-125 transition-transform duration-300">
+                                </div>
+                                <div
+                                    class="text-teal-600 group-hover/item:text-teal-900 transition-colors duration-300">
+                                    <b>Impact:</b> Deliver uninterrupted power while permanently diverting industrial carbon emissions from the atmosphere.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mission CTA -->
+                        <div class="mt-8 pt-6 border-t border-gray-100">
+                            <a href="#join">
+                                <button class="btn-primary text-white px-6 py-3 rounded-xl font-semibold text-sm w-full">
+                                    Join Our Mission
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Section -->
+    <section id="product" class="py-20 bg-gradient-to-br from-green-200 via-cyan-200 to-teal-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-teal-900 mb-4">Engineering the Carbon-Neutral Energy Generator</h2>
+                <p class="text-xl text-teal-600 max-w-3xl mx-auto">Revolutionary technology that use carbon
+                    dioxide as a fuel to generate clean electricity, creating a sustainable energy cycle that benefits both
+                    industry and environment.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16 items-center mb-16">
+                <div class="earth-texture rounded-2xl p-12 text-white relative overflow-hidden">
+                    <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                    <div class="relative z-10">
+                        <div
+                            class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-8">
+                            <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-6">How It Works</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div
+                                    class="w-8 h-8 bg-white bg-opacity-30 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <span class="text-sm font-bold">1</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2">Fuel Processing</h4>
+                                    <p class="text-emerald-50">Liquid CO₂ is compressed and heated to desirable
+                                        pressure and temperature.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div
+                                    class="w-8 h-8 bg-white bg-opacity-30 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <span class="text-sm font-bold">2</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2">Closed-Loop Power Conversion</h4>
+                                    <p class="text-emerald-50">The transcritical CO₂ is expanded in a bladeless
+                                        trubine to rotate the shaft of the alternator.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div
+                                    class="w-8 h-8 bg-white bg-opacity-30 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <span class="text-sm font-bold">3</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2">Clean Energy Output</h4>
+                                    <p class="text-emerald-50">Generated electricity powers facilities while reducing
+                                        atmospheric emissions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-teal-900 mb-8">Key Benefits</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-teal-900 mb-2">Carbon Neutral Energy</h4>
+                                <p class="text-teal-600">Every kilowatt generated is CO₂ free, using captured industrial
+                                    waste as fuel for a net-neutral energy production cycle.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-teal-900 mb-2">Bi-Directional Financial Advantage</h4>
+                                <p class="text-teal-600">Achieves substantial cost savings and generates new revenue by
+                                    selling surplus, clean power back to the utility grid.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-teal-900 mb-2">Scalable Technology</h4>
+                                <p class="text-teal-600">Provides flexible, decentralized deployment, easily scaling
+                                    from small facilities to large complexes and microgrids.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="bg-gradient-to-r from-emerald-500 to-green-600 rounded-2xl p-8 text-white text-center">
+                <h3 class="text-2xl font-bold mb-4">Ready to Transform Your Energy Future?</h3>
+                <p class="text-emerald-100 mb-6 max-w-2xl mx-auto">Join the revolution in sustainable energy. Our CO₂
+                    converter technology is ready for pilot programs with forward-thinking companies.</p>
+                <button
+                    class="bg-white text-emerald-600 px-8 py-3 rounded-lg font-semibold hover:bg-emerald-50 transition-colors">
+                    Request a Demo
+                </button>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-32 bg-gradient-to-br from-white via-stone-50/30 to-cyan-50 relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 opacity-20">
+            <div
+                class="absolute top-1/4 right-0 w-96 h-96 bg-gradient-to-l from-teal-200 to-transparent rounded-full blur-3xl">
+            </div>
+            <div
+                class="absolute bottom-1/4 left-0 w-96 h-96 bg-gradient-to-r from-amber-200 to-transparent rounded-full blur-3xl">
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-bold text-teal-900 mb-6">Meet Our Visionary Team</h2>
+                <p class="text-xl text-teal-600 max-w-4xl mx-auto font-light leading-relaxed">
+                    Pioneering innovators, engineers, and environmentalists united by a shared mission to heal our planet
+                    through revolutionary energy technology
+                </p>
+            </div>
+
+            <!-- Founders Section -->
+            <div class="mb-24">
+                <div class="text-center mb-16">
+                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Founders</h3>
+                    <div class="w-24 h-1 bg-gradient-to-r from-teal-600 to-cyan-700 mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid lg:grid-cols-1 gap-12 max-w-xl mx-auto">
+                    <!-- Mohak Bhalla -->
+                    <div class="team-card rounded-3xl p-10 text-center group">
+                        <div class="relative mb-8">
+                            <div
+                                class="w-40 h-40 bg-gradient-to-br from-teal-500 via-cyan-600 to-teal-700 rounded-full mx-auto flex items-center justify-center shadow-2xl group-hover:shadow-teal-600/30 transition-all duration-500">
+                                <span class="text-5xl font-bold text-white">MB</span>
+                            </div>
+                            <!-- Floating Badge -->
+                            <div
+                                class="absolute -top-2 -right-2 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-teal-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <h4 class="text-2xl font-bold text-gray-900 mb-2">Mohak Bhalla</h4>
+                        <p class="text-emerald-600 font-semibold text-lg mb-6">Founder & CEO</p>
+
+                        <p class="text-gray-600 mb-8 leading-relaxed">
+                            A visionary architect of sustainable change, he holds an <b>MTech in Energy Systems</b>.
+                            He forged his innovative approach across four years at Schneider Electric, where
+                            his practical work designing IoT solutions for energy monitoring directly shaped
+                            his vision for resilient microgrid solutions.
+                        </p>
+
+                        <!-- Achievements -->
+                        <!-- <div class="grid grid-cols-2 gap-6 mb-8">
+                            <div class="bg-gradient-to-br from-emerald-50 to-green-50 rounded-2xl p-4">
+                                <div class="text-3xl font-bold text-emerald-800">M.Tech</div>
+                                <div class="text-sm text-gray-600 font-medium">Energy Systems and Management</div>
+                            </div>
+                            <div class="bg-gradient-to-br from-emerald-50 to-green-50 rounded-2xl p-4">
+                                <div class="text-3xl font-bold text-emerald-800">25+</div>
+                                <div class="text-sm text-gray-600 font-medium">Patents Filed</div>
+                            </div>
+                        </div> -->
+
+                        <!-- Social Links -->
+                        <div class="flex justify-center space-x-4">
+                            <div
+                                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-emerald-100 transition-colors cursor-pointer">
+                                <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                </svg>
+                            </div>
+                            <div
+                                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-emerald-100 transition-colors cursor-pointer">
+                                <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Marcus Rodriguez -->
+                    <!-- <div class="team-card rounded-3xl p-10 text-center group">
+                        <div class="relative mb-8">
+                            <div
+                                class="w-40 h-40 bg-gradient-to-br from-teal-400 via-cyan-500 to-teal-600 rounded-full mx-auto flex items-center justify-center shadow-2xl group-hover:shadow-teal-500/30 transition-all duration-500">
+                                <span class="text-5xl font-bold text-white">SB</span>
+                            </div>
+                            Floating Badge
+                            <div
+                                class="absolute -top-2 -right-2 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-teal-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <h4 class="text-2xl font-bold text-gray-900 mb-2">Shakuntala Bhalla</h4>
+                        <p class="text-emerald-600 font-semibold text-lg mb-6">Co-Founder & CTO</p>
+
+                        <p class="text-gray-600 mb-8 leading-relaxed">
+                            Former Tesla energy systems architect. Expert in scaling clean technology solutions and
+                            industrial implementation of sustainable energy systems.
+                        </p>
+
+                        Achievements
+                        <div class="grid grid-cols-2 gap-6 mb-8">
+                            <div class="bg-gradient-to-br from-teal-50 to-cyan-50 rounded-2xl p-4">
+                                <div class="text-3xl font-bold text-teal-800">MS</div>
+                                <div class="text-sm text-gray-600 font-medium">Electrical Engineering</div>
+                            </div>
+                            <div class="bg-gradient-to-br from-teal-50 to-cyan-50 rounded-2xl p-4">
+                                <div class="text-3xl font-bold text-teal-800">12+</div>
+                                <div class="text-sm text-gray-600 font-medium">Years at Tesla</div>
+                            </div>
+                        </div>
+
+                        Social Links
+                        <div class="flex justify-center space-x-4">
+                            <div
+                                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-emerald-100 transition-colors cursor-pointer">
+                                <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                </svg>
+                            </div>
+                            <div
+                                class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-emerald-100 transition-colors cursor-pointer">
+                                <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+
+            <!-- Core Team Section -->
+            <!-- <div class="mb-20">
+                <div class="text-center mb-16">
+                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Core Team</h3>
+                    <div class="w-24 h-1 bg-gradient-to-r from-teal-600 to-cyan-700 mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    Dr. Aisha Kumar
+                    <div class="card-modern rounded-2xl p-8 text-center group">
+                        <div
+                            class="w-24 h-24 bg-gradient-to-br from-slate-400 to-slate-500 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg group-hover:shadow-slate-400/25 transition-all duration-300 group-hover:scale-110">
+                            <span class="text-2xl font-bold text-white">TB</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-900 mb-2">Tanvi Bhalla</h4>
+                        <p class="text-emerald-600 font-semibold mb-4">Lead Scientist</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Molecular chemistry expert specializing in CO₂
+                            conversion catalysts and sustainable energy research</p>
+                    </div>
+
+                    James Liu
+                    <div class="card-modern rounded-2xl p-8 text-center group">
+                        <div
+                            class="w-24 h-24 bg-gradient-to-br from-gray-400 to-gray-500 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg group-hover:shadow-gray-400/25 transition-all duration-300 group-hover:scale-110">
+                            <span class="text-2xl font-bold text-white">MB</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-900 mb-2">Mehul Bhalla</h4>
+                        <p class="text-emerald-600 font-semibold mb-4">Head of Engineering</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Systems integration specialist with expertise
+                            in industrial energy solutions and clean technology deployment</p>
+                    </div>
+
+                    Elena Petrov
+                    <div class="card-modern rounded-2xl p-8 text-center group">
+                        <div
+                            class="w-24 h-24 bg-gradient-to-br from-stone-400 to-stone-500 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg group-hover:shadow-stone-400/25 transition-all duration-300 group-hover:scale-110">
+                            <span class="text-2xl font-bold text-white">VB</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-900 mb-2">Vansh Bhalla</h4>
+                        <p class="text-emerald-600 font-semibold mb-4">VP of Operations</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Former renewable energy project manager with
+                            global deployment experience and operational excellence</p>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- Join Team CTA -->
+            <section id="join">
+                <div class="text-center">
+                    <div class="card-modern rounded-3xl p-12 max-w-3xl mx-auto relative overflow-hidden group">
+                        <!-- Background Gradient -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-cyan-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        </div>
+
+                        <div class="relative z-10">
+                            <div
+                                class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl mx-auto mb-8 flex items-center justify-center">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                                    </path>
+                                </svg>
+                            </div>
+
+                            <h3 class="text-3xl font-bold text-gray-900 mb-6">Join Our Mission</h3>
+                            <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+                                We're looking for passionate individuals who want to make a real impact on climate change.
+                                Join us in building the future of sustainable energy.
+                            </p>
+
+                            <div class="text-gray-400 flex flex-col sm:flex-row gap-4 justify-center">
+                                For internships and job opportunities, interested individuals can
+                                email their resumes at @bhallamohak17@gmail.com
+                                <!-- <button class="btn-primary text-white px-8 py-4 rounded-2xl font-semibold">
+                                    View Open Positions
+                                </button>
+                                <button
+                                    class="border-2 border-emerald-600 text-emerald-600 px-8 py-4 rounded-2xl font-semibold hover:bg-emerald-50 transition-all duration-300">
+                                    Submit Resume
+                                </button> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Partner with Us</h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">Ready to transform your energy future? Let's discuss
+                    how our revolutionary technology can benefit your organization.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-6">Get in Touch</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center text-gray-300">
+                            <svg class="w-6 h-6 mr-4 text-emerald-400" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                            contact@equiterionenergy.com
+                        </div>
+                        <!-- <div class="flex items-center text-gray-300">
+                            <svg class="w-6 h-6 mr-4 text-emerald-400" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                                </path>
+                            </svg>
+                            +91 8527730570
+                        </div> -->
+                        <div class="flex items-center text-gray-300">
+                            <svg class="w-6 h-6 mr-4 text-emerald-400" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            New Delhi, India
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <h4 class="text-lg font-semibold text-white mb-4">Partnership Opportunities</h4>
+                        <div class="space-y-3 text-gray-300">
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
+                                Pilot program partnerships
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
+                                Industrial implementation projects
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
+                                Research and development collaboration
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
+                                Investment opportunities
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Start the Conversation</h3>
+                    <form id="contact-form" class="space-y-4">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <input type="text" id="name" placeholder="Your Name"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                                required>
+                            <input type="text" id="company" placeholder="Company Name"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <input type="email" id="email" placeholder="Your Email"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                                required>
+                        </div>
+                        <div>
+                            <select id="interest"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                                required>
+                                <option value="">Select Your Interest</option>
+                                <option value="pilot">Pilot Program Partnership</option>
+                                <option value="industrial">Industrial Implementation</option>
+                                <option value="research">Research Collaboration</option>
+                                <option value="investment">Investment Opportunity</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <textarea id="message" rows="4"
+                                placeholder="Tell us about your project or interest in our technology..."
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                                required></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-emerald-600 text-white py-3 rounded-lg hover:bg-emerald-700 transition-colors font-semibold">
+                            Send Message
+                        </button>
+                    </form>
+                    <div id="form-message" class="mt-4 p-4 rounded-lg hidden"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-10 h-10 bg-gradient-to-r from-emerald-500 to-green-700 rounded-full mr-3 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold text-white">Equiterion Energy</span>
+                    </div>
+                    <p class="text-gray-400">Energy in Balance with the Earth. Generating clean electricity from CO₂
+                        for a sustainable future.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Technology</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#product" class="hover:text-white transition-colors">Carbon-Neutral Generator</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Research Papers</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Patents</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#vision" class="hover:text-white transition-colors">Vision & Mission</a></li>
+                        <li><a href="#team" class="hover:text-white transition-colors">Our Team</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">News</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Partners</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#contact" class="hover:text-white transition-colors">Partnership Program</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Investors</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Pilot Programs</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Equiterion Energy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Contact form handling
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const messageDiv = document.getElementById('form-message');
+
+            // Simulate form submission
+            messageDiv.className = 'mt-4 p-4 rounded-lg bg-green-100 text-green-800';
+            messageDiv.textContent = `Thank you, ${name}! Your message has been sent successfully. We'll get back to you soon.`;
+            messageDiv.classList.remove('hidden');
+
+            // Reset form
+            this.reset();
+
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                messageDiv.classList.add('hidden');
+            }, 5000);
+        });
+
+        // Add scroll effect to navbar and progress bar
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('nav');
+            const progressBar = document.querySelector('.progress-bar');
+
+            // Navbar shadow effect
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-xl');
+            } else {
+                navbar.classList.remove('shadow-xl');
+            }
+
+            // Progress bar
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            progressBar.style.width = scrollPercent + '%';
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.card-modern, .team-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter animation for metrics
+        const animateCounters = () => {
+            const counters = document.querySelectorAll('.metric-counter');
+            counters.forEach(counter => {
+                const target = counter.textContent;
+                if (target.includes('%')) {
+                    const num = parseInt(target);
+                    let current = 0;
+                    const increment = num / 50;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= num) {
+                            counter.textContent = num + '%';
+                            clearInterval(timer);
+                        } else {
+                            counter.textContent = Math.floor(current) + '%';
+                        }
+                    }, 30);
+                }
+            });
+        };
+
+        // Trigger counter animation when hero section is visible
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    heroObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        const heroSection = document.querySelector('#home');
+        if (heroSection) {
+            heroObserver.observe(heroSection);
+        }
+    </script>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'98e8ef17c527a701',t:'MTc2MDQ2NDM4My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
+
+</html>
